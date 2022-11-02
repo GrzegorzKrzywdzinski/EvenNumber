@@ -39,12 +39,21 @@ namespace EvenNumber
             try
             {
                 string end;
+                bool error = true;
                 Console.WriteLine("Czy chcesz zakończyć, odpowiedz T lub N:");
 
                 do
                 {
                     end = Console.ReadLine().ToUpper();
-                } while (!(end.Equals("N") || end.Equals("T")));
+                    if (end.Equals("N") || end.Equals("T"))
+                        error = false;
+                    else
+                    {
+                        error = true;
+                        Console.WriteLine("Wprowadziłeś zły znak, zakończenie: T, kontynuacja: N");
+                    }
+                        
+                } while (error);
 
                 if (end.Equals("N")) return true;
                 else return false;
